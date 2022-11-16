@@ -9,9 +9,18 @@
     "preview": "vite preview"
   },
   "eslintConfig": {
-    "extends": ["standard"]
+    "extends": [
+      "standard",
+      "prettier"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
   },
   "devDependencies": {
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "^2.7.1",
     "standard": "^17.0.0",
     "vite": "^3.2.4"
   }
