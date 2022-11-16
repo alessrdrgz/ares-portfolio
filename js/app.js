@@ -1,4 +1,3 @@
-
 // Animacion boton burbujas
 
 const animateButton = function (e) {
@@ -24,46 +23,60 @@ document.addEventListener('DOMContentLoaded', function () {
   darkMode()
 })
 
-function darkMode () {
+function darkMode() {
   const miStorage = window.localStorage // Objeto para controlar el Local-Storage de Windows
   const PrefiereDarkMode = window.matchMedia('(prefers-color-scheme: dark)') // DEVUELVE VERDADERO SI EL VALOR POR DEFECTO DEL SISTEMA ES DARK
 
-  if (miStorage.getItem('dark') == null) { // SI NO  EXISTE ALGUNA VARIABLE GUARDADA EN STORAGE CON LA CLAVE OSCURO
-    if (PrefiereDarkMode.matches) { // COMO EL VALOR POR DEFECTO DEL SISTEMA ES OSCURO LE ASIGNAMOS ESE VALOR
+  if (miStorage.getItem('dark') == null) {
+    // SI NO  EXISTE ALGUNA VARIABLE GUARDADA EN STORAGE CON LA CLAVE OSCURO
+    if (PrefiereDarkMode.matches) {
+      // COMO EL VALOR POR DEFECTO DEL SISTEMA ES OSCURO LE ASIGNAMOS ESE VALOR
       miStorage.setItem('dark', 1) // CREAMOS ESA VARIABLE EN STORAGE CON VALOR 1=OSCURO
       document.body.classList.add('dark-mode')
-    } else { // POR DEFECTO EL SSITEMA ESTA EN CLARO , DEVUELVE FALSO
+    } else {
+      // POR DEFECTO EL SSITEMA ESTA EN CLARO , DEVUELVE FALSO
       miStorage.setItem('dark', 0) // CREAMOS ESA VARIABLE EN STORAGE CON VALOR 0=CLARO
       document.body.classList.remove('dark-mode')
     }
-  } else { // SI YA EXISTE ALGUNA VARIABLE ALMACENADA CON ESE NOMBRE Y UN VALOR
-    if (miStorage.getItem('dark') === 1) { // VERIFICAMOS SI EL VALOR ES 1 =OSCURO
+  } else {
+    // SI YA EXISTE ALGUNA VARIABLE ALMACENADA CON ESE NOMBRE Y UN VALOR
+    if (miStorage.getItem('dark') === 1) {
+      // VERIFICAMOS SI EL VALOR ES 1 =OSCURO
       document.body.classList.add('dark-mode') // PONEMOS MODO OSCURO
-    } else { // SI EL VALOR ES BLANCO
+    } else {
+      // SI EL VALOR ES BLANCO
       document.body.classList.remove('dark-mode') // PONENMOS MODO CLARO
     }
   }
 
-  PrefiereDarkMode.addEventListener('change', function () { // FUNCION SI EXISTE CAMBIO EN PREFERENCIA DE TEMA POR EL USARIO
-    if (PrefiereDarkMode.matches) { // EL TEMA SIGUE SIENDO OSCURO
+  PrefiereDarkMode.addEventListener('change', function () {
+    // FUNCION SI EXISTE CAMBIO EN PREFERENCIA DE TEMA POR EL USARIO
+    if (PrefiereDarkMode.matches) {
+      // EL TEMA SIGUE SIENDO OSCURO
       miStorage.setItem('dark', 1) // NUEVO VALOR PARA OSCURO=1
       document.body.classList.add('dark-mode')
-    } else { // TEMA BLANCO
+    } else {
+      // TEMA BLANCO
       miStorage.setItem('dark', 0) // NUEVO VALOR PARA OSCURO=0
       document.body.classList.remove('dark-mode')
     }
   })
 
   const botonDarkMode = document.querySelector('.dark-mode-boton') // EVENTO PARA EL BOTON
-  botonDarkMode.addEventListener('click', function () { // AÑÁDIMOS EVENTO
-    if (document.body.classList.contains('dark-mode')) { // SI CAMBIAMOS A MODO CLARO
+  botonDarkMode.addEventListener('click', function () {
+    // AÑÁDIMOS EVENTO
+    if (document.body.classList.contains('dark-mode')) {
+      // SI CAMBIAMOS A MODO CLARO
       miStorage.setItem('dark', 0) // NUEVO VALOR PARA STORAGE OSCURO=0
       document.body.classList.remove('dark-mode')
-      document.getElementById('imagen').src = './img/working-woman-lifestyle.svg'
-    } else { // SI CAMBIAMOS A MODO OSCURO
+      document.getElementById('imagen').src =
+        './img/working-woman-lifestyle.svg'
+    } else {
+      // SI CAMBIAMOS A MODO OSCURO
       miStorage.setItem('dark', 1) // NUEVO VALOR PARA STORAGE OSCURO=1
       document.body.classList.add('dark-mode')
-      document.getElementById('imagen').src = '../img/young-lady-working-on-laptop.svg'
+      document.getElementById('imagen').src =
+        '../img/young-lady-working-on-laptop.svg'
     }
   })
 }
